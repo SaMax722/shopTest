@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		
+		// 비밀번호 일치 여부
 		$("#passwd2").on("keyup", function(){
 			var passwd = $("#passwd").val();
 			var passwd2 = $("#passwd2").val();
@@ -15,11 +15,34 @@
 			$("#idcheck").text(mesg);
 		});
 
+		// ID 중복 체크, 이벤트가 있기 때문에
+		$("#idDupulicatedcheck").on("click",function(){
+			// submit 비활성
+			event.preventDefault();
+			// ajax 연동
+			$.ajax({
+                type:"get",
+                url:"MemberIDCheckServlet",
+                data:{
+                  userid:$("#userid").val()
+                },  // 요청코드
+                dataType:'text',  // 응답받은 데이터 타입
+                success:function(data, status, xhr){
+                  console.log(data);
+                  $("#result").text(data);
+                },
+                error:function(xhr, status, error){
+                     console.log("error 발생");
+                }// 응답코드
+
+             });
+		})
 	});
 </script>
 <form>
 
-* 아이디 : <input type="text" name="userid"><br>
+* 아이디 : <input type="text" name="userid" id="userid">
+<button id="idDupulicatedcheck">중복확인</button><span id="result"></span><br>
 * 비밀번호 : <input type="text" name="passwd" id="passwd"><br>
 비밀번호 확인 : <input type="text" name="passwd2" id="passwd2"><span id="idcheck"></span><br>
 이름 : <input type="text" name="username"><br>
