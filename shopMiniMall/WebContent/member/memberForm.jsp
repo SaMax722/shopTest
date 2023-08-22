@@ -23,14 +23,14 @@
 </select>-
 <input type="text" name="phone2">-
 <input type="text" name="phone3"><br>
-<br>
+
 이메일:
 <input type="text" name="email1">@<input type="text" name="email2" placeholder="직접입력">
 <select>
  <option value="daum.net">daum.net</option>
  <option value="google.com">google.com</option>
  <option value="naver.com">naver.com</option>
-</select>-
+</select>
 <br>
 <input type="submit" value="회원가입">
 <input type="reset" value="취소">
