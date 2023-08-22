@@ -36,10 +36,11 @@
                 }// 응답코드
 
              });
-		})
+		});
+		// 모든 회원정보가 입력된후에 submit 되도록 체크하기.
 	});
 </script>
-<form>
+<form action="MemberAddServlet" method="post">
 
 * 아이디 : <input type="text" name="userid" id="userid">
 <button id="idDupulicatedcheck">중복확인</button><span id="result"></span><br>

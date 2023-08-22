@@ -12,10 +12,12 @@ public class MemberDTO {
 	String phone3;
 	String email1;
 	String email2;
+	
 	public MemberDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public MemberDTO(String userid, String passwd, String username, String post, String addr1, String addr2,
 			String phone1, String phone2, String phone3, String email1, String email2) {
 		super();
@@ -31,6 +33,7 @@ public class MemberDTO {
 		this.email1 = email1;
 		this.email2 = email2;
 	}
+	
 	public String getUserid() {
 		return userid;
 	}
@@ -97,6 +100,7 @@ public class MemberDTO {
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", post=" + post

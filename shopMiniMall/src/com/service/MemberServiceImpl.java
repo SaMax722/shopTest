@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
@@ -16,7 +18,37 @@ public class MemberServiceImpl implements MemberService {
 			// DAO 연동
 			MemberDAO dao = new MemberDAO();
 			dto = dao.idCheck(session, userid);
-		}finally {
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	@Override
+	public int memberAdd(MemberDTO dto) {
+		int n = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			// DAO 연동
+			MemberDAO dao = new MemberDAO();
+			n = dao.memberAdd(session, dto);
+			session.commit();
+		} finally {
+			session.close();
+
+		}
+		return n;
+	}
+
+	@Override
+	public MemberDTO login(HashMap<String, String> map) {
+		MemberDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			// DAO 연동
+			MemberDAO dao = new MemberDAO();
+			dto = dao.login(session, map);
+		} finally {
 			session.close();
 		}
 		return dto;
@@ -24,15 +56,10 @@ public class MemberServiceImpl implements MemberService {
 
 }
 
-
-
-
 /*
-SqlSession session = MySqlSessionFactory.getSession();
-		try {
-			
-		}finally {
-			session.close();
-			
-		}
+ * SqlSession session = MySqlSessionFactory.getSession(); try {
+ * 
+ * }finally { session.close();
+ * 
+ * }
  */
