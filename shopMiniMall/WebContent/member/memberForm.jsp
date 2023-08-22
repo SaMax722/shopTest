@@ -1,12 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		$("#passwd2").on("keyup", function(){
+			var passwd = $("#passwd").val();
+			var passwd2 = $("#passwd2").val();
+			var mesg = "일치 O";
+			if(passwd != passwd2){
+				mesg = "일치 X"
+			}
+			
+			$("#idcheck").text(mesg);
+		});
 
+	});
+</script>
 <form>
 
 * 아이디 : <input type="text" name="userid"><br>
-* 비밀번호 : <input type="text" name="passwd"><br>
-비밀번호 확인 : <input type="text" name="passwd2"><br>
+* 비밀번호 : <input type="text" name="passwd" id="passwd"><br>
+비밀번호 확인 : <input type="text" name="passwd2" id="passwd2"><span id="idcheck"></span><br>
 이름 : <input type="text" name="username"><br>
 
 <!-- kakao address API -->
