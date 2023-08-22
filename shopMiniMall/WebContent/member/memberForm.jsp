@@ -15,8 +15,27 @@
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
 <!-- kakao address API -->
+<br>
+전화번호:
+<select name="phone1">
+ <option value="010">010</option>
+ <option value="011">011</option>
+</select>-
+<input type="text" name="phone2">-
+<input type="text" name="phone3"><br>
+<br>
+이메일:
+<input type="text" name="email1">@<input type="text" name="email2" placeholder="직접입력">
+<select>
+ <option value="daum.net">daum.net</option>
+ <option value="google.com">google.com</option>
+ <option value="naver.com">naver.com</option>
+</select>-
+<br>
+<input type="submit" value="회원가입">
+<input type="reset" value="취소">
 
-
+</form>
 
 
 
@@ -79,4 +98,3 @@
     }
 </script>
 
-</form>
