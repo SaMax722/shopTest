@@ -54,6 +54,20 @@ public class MemberServiceImpl implements MemberService {
 		return dto;
 	}
 
+	@Override
+	public MemberDTO mypage(String userid) {
+		MemberDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			// DAO 연동
+			MemberDAO dao = new MemberDAO();
+			dto = dao.mypage(session, userid);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
 }
 
 /*

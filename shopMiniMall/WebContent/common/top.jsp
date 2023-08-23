@@ -19,6 +19,6 @@
 <c:if test="${! empty login}">
 안녕하세요 ${login.username}님<br>
 <a href="<c:url value='LogoutServlet'/>">로그아웃</a>
-<a href="">MYPAGE</a>
+<a href="<c:url value='MyPageServlet'/>">MYPAGE</a>
 <a href="">장바구니목록</a>
 </c:if>
