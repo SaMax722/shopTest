@@ -39,7 +39,7 @@ public class CartListServlet extends HttpServlet {
 		    nextPage="cartList.jsp";
 		 }else {
 		   // 로그인 안했거나 했는데 time-out된 경우	 
-			 nextPage="member/chceckLogin.jsp";			 
+			 nextPage="member/checkLogin.jsp";			 
 		 }
 		 
 		 // 요청위임
