@@ -1,9 +1,15 @@
 
+
+<!-- goodsList.jsp -->
+<!-- 현재는 DB 연동없이 고정된 값을 보여준다. 나중에 DB연결함 -->
+
 <%@page import="com.dto.GoodsDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
@@ -23,15 +29,23 @@
 				<tr>
 						
 <!--  for 시작 -->
-<!-- JSTL로 변경하기 -->
->>>>
-<c:forEach var="dto" items="${goodsList}" varStatus="status">
+<%
+	List<GoodsDTO> list = (List<GoodsDTO>)request.getAttribute("goodsList");
+		for(int i=0; i < list.size(); i++){
+			GoodsDTO dto = list.get(i);
+			String gCode = dto.getgCode();
+			String gCategory = dto.getgCategory();
+			String gName = dto.getgName();
+			String gContent = dto.getgContent();
+			int gPrice = dto.getgPrice();
+			String gImage = dto.getgImage();
+%>
 						<td>
 							<table style='padding:15px'>
 								<tr>
 									<td>
-										<a href="GoodsRetrieveServlet?gCode=${dto.gCode}"> 
-											<img src="images/items/${dto.gImage}.gif" border="0" align="center" width="200">
+										<a href="GoodsRetrieveServlet?gCode=D1"> 
+											<img src="images/items/<%= gImage %>.gif" border="0" align="center" width="200">
 										</a>
 									</td>
 								</tr>
@@ -41,8 +55,8 @@
 								</tr>
 								<tr>
 									<td class= "td_default" align ="center">
-										<a class= "a_black" href="GoodsRetrieveServlet?gCode=${dto.gCode}"> 
-										${dto.gName}<br>
+										<a class= "a_black" href="GoodsRetrieveServlet?gCode=D1"> 
+										<%= gName %><br>
 										</a>
 										<font color="gray">
 										 --------------------
@@ -55,7 +69,7 @@
 								</tr>
 								<tr>
 									<td class="td_gray" align ="center">
-										${dto.gContent}
+										<%= gContent %>
 									</td>
 								</tr>
 								<tr>
@@ -63,19 +77,28 @@
 								</tr>
 								<tr>
 									<td class="td_red" align ="center"><font color="red"><strong>
-									${dto.gPrice}	</strong></font></td>
+									<%= gPrice %>	</strong></font></td>
 								</tr>
 							</table>
 						</td>
+
+  					
+  					        
   						<!-- if 시작 -->
-  						<c:if test="${status.count%4==0}">
-						     <tr>
+  						<%
+  							if((i+1) % 4 == 0){
+  								
+  						%>
+						            <tr>
 								<td height="10">
 							</tr>
-					    </c:if>
+						<%
+  							}
+						%>
 		                <!-- if 끝 -->
-
-</c:forEach>
+<%
+		} // end for
+%>
 <!--  for 끝 -->
 			</table>
 		</td>

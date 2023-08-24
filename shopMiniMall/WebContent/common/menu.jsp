@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!-- menu.jsp -->
-<a href="">top</a>
-<a href="">dress</a>
-<a href="">out</a>
-<a href="">bottom</a>
+<a href="main?gCategory=top">TOP</a>
+<a href="main?gCategory=dress">DRESS</a>
+<a href="main?gCategory=outer">OUTER</a>
+<a href="main?gCategory=bottom">BOTTOM</a>

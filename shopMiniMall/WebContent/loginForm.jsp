@@ -7,10 +7,10 @@
 <title>로그인</title>
 </head>
 <body>
-<h2>로그인 화면입니다</h2>
-<jsp:include page="common/menu.jsp" flush="true"></jsp:include><br>
-<jsp:include page="common/top.jsp" flush="true"></jsp:include><br>
+<h1>로그인 화면입니다</h1>
+<jsp:include page="common/top.jsp" flush="true" /><br>
+<jsp:include page="common/menu.jsp" flush="true" />
 <hr>
-<jsp:include page="member/loginForm.jsp" flush="true"></jsp:include><br>
+<jsp:include page="member/loginForm.jsp" flush="true" />
 </body>
 </html>

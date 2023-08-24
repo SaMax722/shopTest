@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 
 public interface MemberService {
