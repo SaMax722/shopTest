@@ -41,28 +41,39 @@
 		   location.href="CartDeleteServlet?num="+num;
 		   
 	   });
+	   
 	   // 전체 선택 이벤트
 	   $("#allCheck").on("click", function(){
-		   // 체크 여부 확인
-		   alert(this.checked);
-		   var allCheck = this.checked;
-		   // check 해야 될 체크박스 얻기
-		   // var chk = $(".check");
-		   $(".check").each(function(idx,ele){
-				this.checked = allCheck;
-		   });
-
+		   
+		   // allCheck의 체크 여부 확인
+		   //alert(this.checked);
+		   var allCheck= this.checked;
+		   
+		   // check해야될 체크박스 얻기
+		   //var chk = $(".check");
+           $(".check").each(function(idx,ele){
+               this.checked  = allCheck;
+           });
+		   
 	   });
 	   
 	   // 전체 삭제 이벤트
-	   // form 태그 밖에 있는 버튼을 form태그 안의 submit 버튼처럼 동작 처리
-	   $("#deleteAll").on("click",function(){
-		   var f = $("form")[0];
-		  f.action="CartDeleteAllServlet";
-		  f.method="get";
-		  f.submit(); // submit 처리
+	   // form 태그 밖에 있는 버튼을  form태그안의 submit 버튼처럼 동작처리
+	   $("#deleteAll").on("click", function(){
+		  
+		    var f = $("form")[0];
+		    f.action="CartDeleteAllServlet";
+		    f.method="get";
+		    f.submit();  // submit 처리
 	   });
 	   
+	   // 주문 버튼 이벤트
+	   $(".orderBtn").on("click", function(){
+		   var num = $(this).attr("data-num");
+		   
+		   location.href="OrderConfirmServlet?num="+num;
+		   
+	   });
 	   
    });
  </script>
@@ -122,12 +133,15 @@
 >>>
 <form name="myForm">
 <c:forEach  var="dto"  items="${cartList}" varStatus="status">
-		 
+	
 		<tr>
 			<td class="td_default" width="80">
+			
 			<!-- checkbox는 체크된 값만 서블릿으로 넘어간다. 따라서 value에 삭제할 num값을 설정한다. -->
-			<input type="checkbox" name="check" class="check" value="${dto.num}">
-				</td>
+			<input type="checkbox" name="check"  class="check" value="${dto.num}">
+			</td>
+			
+			
 			<td class="td_default" width="80">${dto.num}</td>
 			<td class="td_default" width="80"><img
 				src="images/items/${dto.gImage}.gif" border="0" align="center"
@@ -149,7 +163,11 @@
 				<span id="sum${dto.num}" data-price="${dto.gPrice}">
 				   ${dto.gAmount * dto.gPrice}
 				</span></td>
-			<td><input type="button" value="주문"></td>
+			<td>
+			
+			<input type="button" value="주문"  class="orderBtn" data-num="${dto.num}">
+			
+			</td>
 			<td class="td_default" align="center" width="30"
 				style='padding-left: 10px'>
 			   <input type="button" value="삭제" class="deleteBtn" data-num="${dto.num}" >
@@ -171,7 +189,7 @@
 	<tr>
 		<td align="center" colspan="5"><a class="a_black"
 			href=""> 전체 주문하기 </a>&nbsp;&nbsp;&nbsp;&nbsp; 
-			<button id="deleteAll"> 전체 삭제하기 </button>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="deleteAll">전체 삭제하기 </button> &nbsp;&nbsp;&nbsp;&nbsp;
 			<a class="a_black" href=""> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>
